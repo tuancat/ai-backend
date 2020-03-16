@@ -17,10 +17,12 @@ var firebaseConfig = {
     appId: "1:729306604748:web:6843eb159cbaccff1ace69",
     measurementId: "G-EQX38SW9CX"
 };
+
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);// firebase.analytics();
 
-let serviceAccount = require('D:\\research\\ai-research.json');
+let serviceAccount = require('./ai-research.json');
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
