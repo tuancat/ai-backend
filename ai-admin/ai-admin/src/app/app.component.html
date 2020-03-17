@@ -1,1 +1,29 @@
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->
+
+
+<!-- Creates a layout with a left and right sidenav and implicit content. -->
+<div class="wrapper container-fluid p-0 m-0 h-100">
+  <div class="row col p-0 m-0">
+
+    <mat-sidenav-container class="w-100">
+      <mat-sidenav #snav mode="side" opened="true" class="col-2 col-lg-2 left-sidebar">
+
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <mat-toolbar color="primary" class="example-toolbar">
+          <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <h5 class="example-app-name">AI Web Admin</h5>
+        </mat-toolbar>
+        <section class="main-content">
+          <router-outlet></router-outlet>
+        </section>
+
+      </mat-sidenav-content>
+
+
+    </mat-sidenav-container>
+  </div>
+
+</div>

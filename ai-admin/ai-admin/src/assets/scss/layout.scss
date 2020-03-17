@@ -1,4 +1,21 @@
 @import "color";
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+  .left-sidebar {
+    background-color: $blueish-grey;
+    border-right: 1px solid $gray-600 ;
+  }
+
+  .main-content {
+    -ms-flex: 0 0 calc(100% - 70px);
+    -webkit-flex: 0 0 calc(100% - 70px);
+    flex: 0 0 calc(100% - 70px);
+    max-width: calc(100% - 70px);
+    margin-left: 70px;
+  }
+}
 .layout {
   padding-left: 0;
   padding-right: 0;
@@ -7,6 +24,7 @@
     -o-transition: transform 300ms ease-in-out;
     -webkit-transition: transform 300ms ease-in-out;
     transition: transform 300ms ease-in-out;
+    background-color: $blue;
 
     .nav-wrapper {
       height: calc(100vh - 2*3.75rem - 1px);
