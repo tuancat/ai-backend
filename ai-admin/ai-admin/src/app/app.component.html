@@ -6,22 +6,24 @@
   <div class="row col p-0 m-0">
 
     <mat-sidenav-container class="w-100">
-      <mat-sidenav #snav mode="side" opened="true" class="col-2 col-lg-2 left-sidebar">
 
+      <mat-sidenav #snav mode="side" opened="false" class="col-2 col-lg-2 left-sidebar">
+      <app-left-menu></app-left-menu>
       </mat-sidenav>
       <mat-sidenav-content>
-        <mat-toolbar color="primary" class="example-toolbar">
-          <button mat-icon-button (click)="snav.toggle()">
-            <mat-icon>menu</mat-icon>
-          </button>
+        <mat-toolbar color="accent" class="top-sidebar">
+          <button class="btn btn-black" (click)="snav.toggle()"> <mat-icon>menu</mat-icon></button>
           <h5 class="example-app-name">AI Web Admin</h5>
         </mat-toolbar>
         <section class="main-content">
+<!--          <button mat-flat-button (click)="snav.toggle()">-->
+<!--            &lt;!&ndash;            <mat-icon>menu</mat-icon>&ndash;&gt;-->
+<!--            T-->
+<!--          </button>-->
           <router-outlet></router-outlet>
         </section>
 
       </mat-sidenav-content>
-
 
     </mat-sidenav-container>
   </div>

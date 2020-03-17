@@ -3,9 +3,66 @@
 .wrapper {
   display: flex;
   align-items: stretch;
+
   .left-sidebar {
-    background-color: $blueish-grey;
-    border-right: 1px solid $gray-600 ;
+    background-color: #3A3F48;
+    border-right: 1px solid $gray-600;
+
+    .nav-wrapper {
+      height: calc(100vh - 2 * 3.75rem - 1px);
+
+      .title {
+        padding: 7px 10px;
+
+        span {
+          text-transform: capitalize;
+          font-size: 16px;
+          font-weight: 600;
+          color: $white;
+
+          &.compact {
+            display: none;
+          }
+        }
+      }
+
+      .nav {
+        margin-top: 50px;
+        .nav-item {
+          cursor: pointer;
+          color: white;
+          span {
+            font-size: 14px;
+            margin-left: 15px;
+            font-weight: 600;
+          }
+          a.nav-link:after {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 600;
+            content: "\f105";
+            font-style: normal;
+            display: inline-block;
+            text-rendering: auto;
+            text-align: center;
+            float: right;
+          }
+          .nav-link {
+
+          }
+        }
+
+        .nav-item.active {
+
+        }
+      }
+    }
+  }
+
+  .top-sidebar {
+    padding: 10px 10px 20px 10px;
+    border: 1px solid #BFBFBF;
+    background-color: $white;
+    //box-shadow: 10px 10px 5px #aaaaaa;
   }
 
   .main-content {
@@ -13,12 +70,16 @@
     -webkit-flex: 0 0 calc(100% - 70px);
     flex: 0 0 calc(100% - 70px);
     max-width: calc(100% - 70px);
-    margin-left: 70px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 80px;
   }
 }
+
 .layout {
   padding-left: 0;
   padding-right: 0;
+
   .main-sidebar {
     -moz-transition: transform 300ms ease-in-out;
     -o-transition: transform 300ms ease-in-out;
@@ -27,7 +88,7 @@
     background-color: $blue;
 
     .nav-wrapper {
-      height: calc(100vh - 2*3.75rem - 1px);
+      height: calc(100vh - 2 * 3.75rem - 1px);
 
       .title {
         padding: 7px 10px;
@@ -125,6 +186,7 @@
     padding-bottom: 0.7rem;
   }
 }
+
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
 }
@@ -195,9 +257,11 @@ $sidebar-sm: 70px;
     }
   }
 }
+
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
 }
+
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
 }

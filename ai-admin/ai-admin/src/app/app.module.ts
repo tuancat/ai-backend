@@ -10,10 +10,11 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {LeftMenuComponent} from "./module/left-menu/left-menu.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, LeftMenuComponent
   ],
   imports: [
     BrowserModule,
