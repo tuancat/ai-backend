@@ -4,7 +4,8 @@ import firebase from "firebase";
 import * as admin from 'firebase-admin';
 import {BussinessService} from "./module/bussiness/bussiness.service";
 import {businessRouter} from "./module/bussiness/business.router";
-
+import {LANGUAGE_COLLECTION_PATH} from "./module/base/constant";
+import {LanguageModel} from "./module/base/language.model";
 
 
 var firebaseConfig = {
@@ -26,6 +27,7 @@ let serviceAccount = require('./ai-research.json');
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
+
 class App {
     public app: express.Application;
 
@@ -38,11 +40,12 @@ class App {
     }
 
 
-    private config(): void{
+    private config(): void {
         // Giúp chúng ta tiếp nhận dữ liệu từ body của request
-        this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(bodyParser.urlencoded({extended: false}));
         this.app.use(bodyParser.json());
         this.app.use("/business", businessRouter);
+        this.app.use('/language', languageRouter);
         this.testApi();
 
     }
@@ -77,4 +80,36 @@ class App {
 
     }
 }
+
+export const languageGetAll = () => {
+    let db = admin.firestore();
+    let docRef = db.collection(LANGUAGE_COLLECTION_PATH);
+    return docRef.get();
+};
+export const languageRouter = express.Router();
+languageRouter.get('/', async (req, res) => {
+    let list: Array<LanguageModel> = [];
+    let respone = await languageGetAll();
+    if (!respone.empty) {
+        respone.forEach(result => {
+            let mo = new LanguageModel();
+            mo = mo.convertData(result);
+            list.push(mo);
+        });
+    }
+    res.status(200).send(list);
+});
+languageRouter.post('/', (req, res) => {
+    let db = admin.firestore();
+    let docRef = db.collection(LANGUAGE_COLLECTION_PATH).doc();
+    let currLang = {
+        key: req.body.key,
+        value: req.body.value
+    };
+    docRef.set(currLang).then(value => {
+        res.status(200).send(value.writeTime.valueOf());
+    });
+
+});
+
 export default new App().app;
